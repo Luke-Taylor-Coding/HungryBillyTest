@@ -34,9 +34,9 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    //<summary>
-    // Function to spawn an object from the pool, activating it and returning a reference to it
-    //</summary>
+    ///<summary>
+    /// Function to spawn an object from the pool, activating it and returning a reference to it
+    ///</summary>
     public GameObject SpawnFromPool(Vector3 position, Quaternion rotation)
     {
         // find the first inactive object in the pool

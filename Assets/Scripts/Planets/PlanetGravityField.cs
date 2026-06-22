@@ -22,10 +22,10 @@ public class PlanetGravityField : MonoBehaviour
         }
     }
 
-    //<summary>
-    // Called when another collider enters and stays in the gravity area, filters for players, affecting their Rigidbody2D to pull them towards the planet's center
-    // Note: This method assumes the player has a Rigidbody2D component and is tagged with "Player"
-    //</summary>
+    ///<summary>
+    /// Called when another collider enters and stays in the gravity area, filters for players, affecting their Rigidbody2D to pull them towards the planet's center
+    /// Note: This method assumes the player has a Rigidbody2D component and is tagged with "Player"
+    ///</summary>
     private void OnTriggerStay2D(Collider2D collision)
     {
         // Check if the colliding object is tagged as "Player"

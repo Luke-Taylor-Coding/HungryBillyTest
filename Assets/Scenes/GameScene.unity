@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 294973056}
   - component: {fileID: 294973053}
   - component: {fileID: 294973057}
+  - component: {fileID: 294973058}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -345,6 +346,19 @@ MonoBehaviour:
   m_fuelConsumptionRate: 35
   m_fuelRegenerationRate: 15
   m_currentFuel: 0
+--- !u!114 &294973058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294973051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52905f7fddd4eac4898c1c99cdb84f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCannon
+  m_cannonType: {fileID: 11400000, guid: 9a1477594d27299499ee14d9cf47a78c, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
