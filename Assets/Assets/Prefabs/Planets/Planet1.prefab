@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7775647104107585757}
   - component: {fileID: 3327240418827788187}
   m_Layer: 0
-  m_Name: Planet_Red
+  m_Name: Planet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 1840435030066992420, guid: 72f455349f7014145b3e3611ab7e091a, type: 3}
   m_Color: {r: 0.8396226, g: 0.3920879, b: 0.3920879, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,7 +156,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 1.1
 --- !u!1 &8895544167032291429
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,5 +238,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6913e7743c49f53409db25d2bb4fcb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetGravityField
-  m_GravityEffect: 25
-  m_GravityDistanceMultiplier: 5
+  m_GravityEffect: 35
+  m_GravityDistanceMultiplier: 10

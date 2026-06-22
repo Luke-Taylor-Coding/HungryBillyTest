@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 // A player ability allowing the player to thrust in their moving direction providing a speed boost
@@ -14,7 +15,9 @@ public class PlayerThrust : MonoBehaviour
     [SerializeField] private float m_fuelConsumptionRate = 35f; // Fuel consumed per second while thrusting
     [SerializeField] private float m_fuelRegenerationRate = 20f; // Fuel regenerated per second when not thrusting
 
-    [SerializeField] private float m_currentFuel;
+    [SerializeField] private TextMeshProUGUI m_thrustText;
+
+    private float m_currentFuel;
     private bool m_isThrusting;
 
     private Rigidbody2D m_rb;
@@ -36,6 +39,12 @@ public class PlayerThrust : MonoBehaviour
             Debug.LogError("PlayerThrust: Rigidbody2D component not found on player.");
         if (m_playerMovement == null)
             Debug.LogError("PlayerThrust: PlayerMovement component not found on player.");
+
+        // UI
+        if (m_thrustText != null)
+        {
+            m_thrustText.text = $"Thrust Fuel: {m_currentFuel:F1}/{m_maxFuel}";
+        }
     }
 
     private void Update()
@@ -58,6 +67,12 @@ public class PlayerThrust : MonoBehaviour
         {
             ApplyThrust();
         }
+
+        // Update UI
+        if (m_thrustText != null)
+        {
+            m_thrustText.text = $"Thrust Fuel: {m_currentFuel:F1}/{m_maxFuel}";
+        }
     }
 
     private void ApplyThrust()
@@ -79,6 +94,8 @@ public class PlayerThrust : MonoBehaviour
             // consume fuel
             m_currentFuel -= m_fuelConsumptionRate * Time.fixedDeltaTime;
             m_currentFuel = Mathf.Max(m_currentFuel, 0); // dont go below zero
+
+            // Update UI
         }
     }
 }

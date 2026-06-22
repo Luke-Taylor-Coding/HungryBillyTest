@@ -42,7 +42,9 @@ public class PlayerCannon : MonoBehaviour
         // direction and angle
         Vector3 direction = (mousePosition - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        transform.rotation = rotation;
+        firePoint.localRotation = Quaternion.Euler(0, 0, 90);
     }
 
     /// <summary>

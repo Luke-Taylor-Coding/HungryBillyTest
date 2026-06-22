@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 // This script manages the collection items in the game
@@ -8,6 +9,7 @@ using UnityEngine;
 public class CollectionItemManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] m_spawnPositions;
+    [SerializeField] private TextMeshProUGUI m_collectablesText;
 
     public static CollectionItemManager s_instance { get; private set; } // Singleton instance
 
@@ -31,6 +33,13 @@ public class CollectionItemManager : MonoBehaviour
         }
 
         m_totalItemsToCollect = m_spawnPositions.Length;
+
+        // UI
+        if (m_collectablesText != null)
+        {
+            m_collectablesText.text = $"Collectables: {m_collectedCount}/{m_totalItemsToCollect}";
+        }
+
     }
 
     /// <summary>
@@ -42,8 +51,14 @@ public class CollectionItemManager : MonoBehaviour
         Debug.Log($"Collected {m_collectedCount}/{m_totalItemsToCollect} items.");
         if (m_collectedCount >= m_totalItemsToCollect)
         {
-            Debug.Log("All items collected! You win!");
+            // move to win screen
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        // Update UI
+        if (m_collectablesText != null)
+        {
+            m_collectablesText.text = $"Collectables: {m_collectedCount}/{m_totalItemsToCollect}";
         }
     }
-
 }

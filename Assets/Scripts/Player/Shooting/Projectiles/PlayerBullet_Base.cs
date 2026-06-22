@@ -29,17 +29,36 @@ public class PlayerBullet_Base : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        // apply force to the rigidbody in the direction the bullet is facing (force only needs to apply once as bullet RB has no drag or gravity)
+        // ensure any previous scheduled disable is cancelled (important for pooled objects)
+        CancelInvoke(nameof(DisableBullet));
+
+        // apply force/velocity to the rigidbody in the direction the bullet is facing
         if (m_rb == null)
         {
             Debug.LogError("Rigidbody2D component is missing from the bullet prefab!");
             return;
         }
 
-        m_rb.AddForce(transform.right * m_bulletSpeed, ForceMode2D.Impulse);
+        // reset velocity then set a fresh velocity based on the fire direction.
+        m_rb.linearVelocity = Vector2.zero;
+        m_rb.angularVelocity = 0f;
+        m_rb.linearVelocity = (Vector2)transform.right * m_bulletSpeed;
+
+        // safeguard lifetime value
+        if (m_lifetime <= 0f)
+        {
+            Debug.LogWarning($"PlayerBullet_Base: m_lifetime is <= 0 ({m_lifetime}). Using default 1s to avoid immediate disable.");
+            m_lifetime = 1f;
+        }
 
         // disable bullet after lifetime
         Invoke(nameof(DisableBullet), m_lifetime);
+    }
+
+    private void OnDisable()
+    {
+        // Cancel any pending invokes when the object is disabled (returned to pool)
+        CancelInvoke(nameof(DisableBullet));
     }
 
     private void DisableBullet()
@@ -53,6 +72,20 @@ public class PlayerBullet_Base : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // TODO
+        // if player or other bullet ignore
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            return;
+        }
+
+        // check if the collided object has an EnemyHealth component
+        EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            // apply damage to the enemy
+            enemyHealth.TakeDamage(1);
+        }
+
+        DisableBullet();
     }
 }
