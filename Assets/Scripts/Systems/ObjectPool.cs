@@ -18,6 +18,8 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private GameObject _gameObjectPrefab;
     [SerializeField][Range(1, 1000)] private int _poolSize = 1;
 
+    public GameObject GetPrefab => _gameObjectPrefab;
+
     private void Awake()
     {
         // Ensure prefab is set
@@ -25,6 +27,16 @@ public class ObjectPool : MonoBehaviour
         {
             Debug.LogError("ObjectPool: No prefab set for pooling. Please assign a prefab in the inspector.");
             return;
+        }
+
+        // Register this pool with the ObjectPoolsManager
+        if (ObjectPoolsManager.s_instance != null)
+        {
+            ObjectPoolsManager.s_instance.RegisterPool(this);
+        }
+        else
+        {
+            Debug.LogWarning("ObjectPool: ObjectPoolsManager instance not found. Ensure an ObjectPoolsManager exists in the scene.");
         }
 
         // instantiate pool of objects and deactivate them

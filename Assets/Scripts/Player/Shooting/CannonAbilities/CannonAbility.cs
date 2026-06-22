@@ -12,5 +12,5 @@ public abstract class CannonAbility : ScriptableObject
     public string AbilityName => m_abilityName;
     public string Description => m_description;
 
-    public abstract void Activate(PlayerCannon playerCannon);
+    public abstract void Activate(CannonType cannonType, Transform firePoint);
 }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc5848acff1670949a2a9ead4e293da6, type: 3}
-  m_Name: CannonType_Base
+  m_Name: CannonType_MultiShot
   m_EditorClassIdentifier: Assembly-CSharp::CannonType
-  m_cannonName: Base
-  m_description: Base Cannon type ability and rate of fire
+  m_cannonName: 
+  m_description: 
   m_projectilePrefab: {fileID: 6321199991755753098, guid: 55eac4b02bbc49b478b758274a54d199, type: 3}
   m_cooldown: 0.5
-  m_ability: {fileID: 11400000, guid: e4f81bf840f85ab4fa5cd268f919c40d, type: 2}
+  m_ability: {fileID: 11400000, guid: 981d78d3ddfb3cd4e8bbad32aa6e58eb, type: 2}
