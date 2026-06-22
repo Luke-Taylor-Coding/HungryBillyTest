@@ -63,4 +63,12 @@ public class PlayerCannon : MonoBehaviour
         // reset cooldown timer based on cannon types fire rate
         m_cooldownTimer = m_cannonType.Cooldown;
     }
+
+    /// <summary>
+    /// An exposed function for setting the cannon type 
+    /// </summary>
+    public void SetCannonType(CannonType newType)
+    {
+        m_cannonType = newType;
+    }
 }
