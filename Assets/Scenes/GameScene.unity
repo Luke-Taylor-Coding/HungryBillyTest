@@ -712,8 +712,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1293487144}
+  - component: {fileID: 1293487145}
   m_Layer: 0
-  m_Name: BulletPool
+  m_Name: PlayerBulletPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,6 +735,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1709790578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1293487145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293487143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f469057e8e49f489fc0cbbabc551ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+  _gameObjectPrefab: {fileID: 6321199991755753098, guid: 55eac4b02bbc49b478b758274a54d199, type: 3}
+  _poolSize: 10
 --- !u!1 &1406807612
 GameObject:
   m_ObjectHideFlags: 0
