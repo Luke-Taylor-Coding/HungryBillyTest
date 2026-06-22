@@ -28,7 +28,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Smoothly change the current velocity towards the target velocity.
-        m_rb.linearVelocity = Vector2.SmoothDamp(m_rb.linearVelocity, m_targetVelocity, ref m_refVelocity, m_moveDampening);
+        // Calculate the desired velocity after damping
+        Vector2 desiredVelocity = Vector2.SmoothDamp(m_rb.linearVelocity, m_targetVelocity, ref m_refVelocity, m_moveDampening);
+
+        // Calculate the change in velocity required to reach the desired velocity
+        Vector2 velocityChange = desiredVelocity - m_rb.linearVelocity;
+
+        // Convert the velocity change to a force. Force = mass * acceleration = mass * (delta_velocity / delta_time)
+        Vector2 force = m_rb.mass * (velocityChange / Time.fixedDeltaTime);
+
+        // Add the force to the Rigidbody
+        m_rb.AddForce(force);
+    }
+
+    public Vector2 GetPlayerMovement()
+    {
+        return m_movement;
     }
 }
