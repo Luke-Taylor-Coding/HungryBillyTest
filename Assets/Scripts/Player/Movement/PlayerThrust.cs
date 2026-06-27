@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // A player ability allowing the player to thrust in their moving direction providing a speed boost
 // This will be attached to the player game object and will be used with the player movement script
@@ -7,6 +8,9 @@ using UnityEngine;
 
 public class PlayerThrust : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private InputActionReference m_thrustActionReference;
+
     [Header("Thrust Settings")]
     [SerializeField][Range(0.0f, 100.0f)] private float m_thrustForce = 30f; // The continuous force applied when thrusting
 
@@ -50,7 +54,7 @@ public class PlayerThrust : MonoBehaviour
     private void Update()
     {
         // check for thrust input
-        m_isThrusting = Input.GetKey(KeyCode.Space);
+        m_isThrusting = m_thrustActionReference.action.ReadValue<float>() > 0.5f;
 
         // regenerate fuel if not thrusting and fuel is not yet full
         if (!m_isThrusting && m_currentFuel < m_maxFuel)

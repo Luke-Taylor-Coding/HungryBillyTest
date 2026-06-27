@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // class for basic player movement logic
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float m_moveSpeed = 5f;
     [SerializeField] private float m_moveDampening = 0.05f;
+    [SerializeField] private InputActionReference m_movementActionReference;
 
     private Rigidbody2D m_rb;
     private Vector2 m_movement;
@@ -18,9 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // get input using the new input system (WASD or Arrow Keys)
-        m_movement.x = Input.GetAxisRaw("Horizontal");
-        m_movement.y = Input.GetAxisRaw("Vertical");
+        m_movement = m_movementActionReference.action.ReadValue<Vector2>();
 
         // Define the target velocity based on input
         m_targetVelocity = m_movement.normalized * m_moveSpeed;

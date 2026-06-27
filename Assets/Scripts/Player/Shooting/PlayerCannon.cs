@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Animations;
+using UnityEngine.InputSystem;
 
 // The player cannon class is the main class for shooting
 // This handles player input, aiming, shooting and cooldown management
@@ -9,6 +9,9 @@ public class PlayerCannon : MonoBehaviour
 {
     [SerializeField] private CannonType m_cannonType;
     [SerializeField] private Transform m_firePoint;
+    [SerializeField] private InputActionReference m_attackActionReference;
+    [SerializeField] private InputActionReference m_lookActionReference;
+
 
     private float m_cooldownTimer;
     public Transform firePoint => m_firePoint;
@@ -20,7 +23,7 @@ public class PlayerCannon : MonoBehaviour
 
         // Cooldown and shooting logic
         m_cooldownTimer -= Time.deltaTime;
-        if (Input.GetButton("Fire1") && m_cooldownTimer <= 0)
+        if (m_attackActionReference.action.ReadValue<float>() > 0.5f && m_cooldownTimer <= 0)
         {
             Shoot();
         }    
@@ -33,7 +36,7 @@ public class PlayerCannon : MonoBehaviour
     private void Aim()
     {
         // convert mouse screen pos to world at the cannon's Z plane
-        Vector3 mouseScreen = Input.mousePosition;
+        Vector3 mouseScreen = m_lookActionReference.action.ReadValue<Vector2>();
         float camToObject = Mathf.Abs(Camera.main.transform.position.z - transform.position.z);
         mouseScreen.z = camToObject;
 

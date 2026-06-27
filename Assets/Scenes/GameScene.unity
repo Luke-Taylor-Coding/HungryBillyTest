@@ -1239,6 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   m_moveSpeed: 5
   m_moveDampening: 0.3
+  m_movementActionReference: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!50 &294973054
 Rigidbody2D:
   serializedVersion: 5
@@ -1373,6 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3789b66f84e028f4ea8565f12ebc31c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerThrust
+  m_thrustActionReference: {fileID: 7329832129910119399, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_thrustForce: 10
   m_maxFuel: 100
   m_fuelConsumptionRate: 35
@@ -1392,6 +1394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCannon
   m_cannonType: {fileID: 11400000, guid: 9a1477594d27299499ee14d9cf47a78c, type: 2}
   m_firePoint: {fileID: 1534105479}
+  m_attackActionReference: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_lookActionReference: {fileID: -5630151704836100654, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!114 &294973059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6767,6 +6771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIControls
   m_gameUI: {fileID: 1611330202}
+  m_uiActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &2019437157
 GameObject:
   m_ObjectHideFlags: 0
