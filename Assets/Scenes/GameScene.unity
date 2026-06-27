@@ -741,7 +741,6 @@ GameObject:
   - component: {fileID: 188487654}
   - component: {fileID: 188487653}
   - component: {fileID: 188487652}
-  - component: {fileID: 188487651}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -769,18 +768,6 @@ RectTransform:
   m_AnchoredPosition: {x: -517, y: -92}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &188487651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188487649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1275326097597c4ab34b00a833868c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuitButtonScript
 --- !u!114 &188487652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,9 +812,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 188487651}
-        m_TargetAssemblyTypeName: QuitButtonScript, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 686822830}
+        m_TargetAssemblyTypeName: GameSceneManager, Assembly-CSharp
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2601,6 +2588,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6016039500935330722, guid: ab15f3014e3970348a5ef57e78ca8fc9, type: 3}
   m_PrefabInstance: {fileID: 1664349452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &686822828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686822829}
+  - component: {fileID: 686822830}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &686822829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686822828}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1276362844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &686822830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686822828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc4b4326d95a00449afe78687b39f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameSceneManager
 --- !u!4 &688612781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6016039500935330722, guid: 6c455d17cb95c6c4b89ab983c3d7d72d, type: 3}
@@ -4137,6 +4168,7 @@ Transform:
   - {fileID: 141673945}
   - {fileID: 1993981568}
   - {fileID: 467668773}
+  - {fileID: 686822829}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1278530452
@@ -6816,7 +6848,6 @@ GameObject:
   - component: {fileID: 2019857963}
   - component: {fileID: 2019857962}
   - component: {fileID: 2019857961}
-  - component: {fileID: 2019857960}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -6844,18 +6875,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 232}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &2019857960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019857958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0dc00fea018a904aae81a46517f7239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayButtonScript
 --- !u!114 &2019857961
 MonoBehaviour:
   m_ObjectHideFlags: 0

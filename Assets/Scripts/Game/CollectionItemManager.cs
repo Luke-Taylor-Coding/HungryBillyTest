@@ -51,8 +51,8 @@ public class CollectionItemManager : MonoBehaviour
         Debug.Log($"Collected {m_collectedCount}/{m_totalItemsToCollect} items.");
         if (m_collectedCount >= m_totalItemsToCollect)
         {
-            // move to win screen
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+            // move to menu
+            GameSceneManager.s_instance.LoadMainMenu();
         }
 
         // Update UI

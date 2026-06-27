@@ -12,21 +12,45 @@ public class PlayerCannon : MonoBehaviour
     [SerializeField] private InputActionReference m_attackActionReference;
     [SerializeField] private InputActionReference m_lookActionReference;
 
-
     private float m_cooldownTimer;
+    private bool m_isFiring;
     public Transform firePoint => m_firePoint;
 
-    private void Update()
+    private void OnEnable()
     {
-        // Handle aiming the cannon based on mouse position
+        m_attackActionReference.action.started += OnFireStarted;
+        m_attackActionReference.action.canceled += OnFireStopped;
+    }
+
+    private void OnDisable()
+    {
+        m_attackActionReference.action.started -= OnFireStarted;
+        m_attackActionReference.action.canceled -= OnFireStopped;
+    }
+
+    private void FixedUpdate()
+    {
         Aim();
 
-        // Cooldown and shooting logic
-        m_cooldownTimer -= Time.deltaTime;
-        if (m_attackActionReference.action.ReadValue<float>() > 0.5f && m_cooldownTimer <= 0)
+        if (m_cooldownTimer > 0)
+        {
+            m_cooldownTimer -= Time.fixedDeltaTime;
+        }
+
+        if (m_isFiring && m_cooldownTimer <= 0)
         {
             Shoot();
-        }    
+        }
+    }
+
+    private void OnFireStarted(InputAction.CallbackContext context)
+    {
+        m_isFiring = true;
+    }
+
+    private void OnFireStopped(InputAction.CallbackContext context)
+    {
+        m_isFiring = false;
     }
 
     /// <summary>
