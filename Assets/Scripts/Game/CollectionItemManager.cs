@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 // This script manages the collection items in the game
 // These items are use to win the game and can be collected by the player
@@ -10,6 +11,7 @@ public class CollectionItemManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] m_spawnPositions;
     [SerializeField] private TextMeshProUGUI m_collectablesText;
+    [SerializeField] private UnityEvent m_onAllItemsCollected;
 
     public static CollectionItemManager s_instance { get; private set; } // Singleton instance
 
@@ -51,8 +53,8 @@ public class CollectionItemManager : MonoBehaviour
         Debug.Log($"Collected {m_collectedCount}/{m_totalItemsToCollect} items.");
         if (m_collectedCount >= m_totalItemsToCollect)
         {
-            // move to menu
-            GameSceneManager.s_instance.LoadMainMenu();
+            // call game win event
+            m_onAllItemsCollected.Invoke();
         }
 
         // Update UI

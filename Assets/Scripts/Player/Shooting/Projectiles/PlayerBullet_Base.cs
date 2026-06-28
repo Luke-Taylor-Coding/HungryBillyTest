@@ -79,12 +79,7 @@ public class PlayerBullet_Base : MonoBehaviour
         }
 
         // check if the collided object has an EnemyHealth component
-        EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
-        {
-            // apply damage to the enemy
-            enemyHealth.TakeDamage(1);
-        }
+     
 
         DisableBullet();
     }
